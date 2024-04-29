@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Spreadsheet;
 using AngleSharp.Html.Parser;
+using System.Text.RegularExpressions;
 
 namespace Canary
 {
@@ -865,8 +866,8 @@ namespace Canary
             var ws = wb.Worksheets.Add("賃貸情報");
 
             // ヘッダー生成
-            var header = new[] { "No.", "建物名", "住所", "建築年", "総階数(地下含む)", "建物種類", "構造", "部屋番号", "階数", 
-                "敷金", "礼金", "家賃(共益費込)", "入居可能タイミング", "レイアウト", "更新日時", "間取り", "間取り画像"};
+            var header = new[] { "No.", "建物名", "都道府県", "住所", "建築年", "総階数(地下含む)", "建物種類", "構造", "部屋番号", "階数", 
+                "敷金", "礼金", "家賃(共益費込)", "入居可能タイミング", "レイアウト", "更新日時", "間取り", "ページURL", "間取り画像"};
             ws.Cell("A1").InsertData(new[] { header });
 
             for (int i = 0; i < rooms_data.Count; i++)
@@ -887,10 +888,15 @@ namespace Canary
                     continue;
                 }
 
+                // 住所を区切る
+                var reg = new Regex("(...??[都道府県])((?:旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?郡(?:玉村|大町|.+?)[町村]|.+?市.+?区|.+?[市区町村])(.+)");
+                var s = reg.Split(estates["addressStr"].ToString())[1];
+
                 var row = new List<string>
                 {
                     (i + 1).ToString(),
                     estates["name"].ToString(),
+                    s,
                     estates["addressStr"].ToString(),
                     estates["builtAtYear"].ToString(),
                     (int.Parse(estates["aboveGroundStory"].ToString()) + int.Parse(estates["underGroundStory"].ToString())).ToString(),
@@ -910,9 +916,12 @@ namespace Canary
                 // 行挿入
                 ws.Cell("A" + (i + 2).ToString()).InsertData(new[] { row });
 
-                // ハイパーリンクのみ挿入
-                ws.Cell(i + 2, row.Count + 1).SetHyperlink(new XLHyperlink(rooms_data[i]["layoutImageUrl"]["value"].ToString()));
-                ws.Cell(i + 2, row.Count + 1).Value = rooms_data[i]["layoutImageUrl"]["value"].ToString();
+                // ハイパーリンク挿入
+                var url = "https://web.canary-app.jp/chintai/rooms/" + rooms_data[i]["id"].ToString();
+                ws.Cell(i + 2, row.Count + 1).SetHyperlink(new XLHyperlink(url));
+                ws.Cell(i + 2, row.Count + 1).Value = url;
+                ws.Cell(i + 2, row.Count + 2).SetHyperlink(new XLHyperlink(rooms_data[i]["layoutImageUrl"]["value"].ToString()));
+                ws.Cell(i + 2, row.Count + 2).Value = rooms_data[i]["layoutImageUrl"]["value"].ToString();
             }
 
             // 列を整形する
