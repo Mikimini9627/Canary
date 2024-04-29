@@ -1773,6 +1773,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Canary 賃貸検索";
             gbArea.ResumeLayout(false);
             gbArea.PerformLayout();
