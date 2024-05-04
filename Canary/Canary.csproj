@@ -6,14 +6,8 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>CanaryHelper</AssemblyName>
     <ApplicationIcon>canary.ico</ApplicationIcon>
-    <ApplicationManifest></ApplicationManifest>
   </PropertyGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Remove="app.manifest" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Include="canary.ico" />

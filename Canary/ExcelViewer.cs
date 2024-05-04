@@ -36,7 +36,7 @@ namespace Canary
         }
 
         /// <summary>
-        ///  数字から列名に変換する
+        /// 数値から列名へ変換する
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>

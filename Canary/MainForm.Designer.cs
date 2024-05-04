@@ -164,8 +164,6 @@
             chkSecurity2 = new CheckBox();
             chkSecurity1 = new CheckBox();
             tpKodawari4 = new TabPage();
-            grpOriginal = new GroupBox();
-            chkOriginal1 = new CheckBox();
             grpSonota = new GroupBox();
             chkSonota2 = new CheckBox();
             chkSonota5 = new CheckBox();
@@ -203,7 +201,6 @@
             grpChusya.SuspendLayout();
             grpSecurity.SuspendLayout();
             tpKodawari4.SuspendLayout();
-            grpOriginal.SuspendLayout();
             grpSonota.SuspendLayout();
             SuspendLayout();
             // 
@@ -444,14 +441,14 @@
             btnOutput.Name = "btnOutput";
             btnOutput.Size = new Size(171, 31);
             btnOutput.TabIndex = 4;
-            btnOutput.Text = "エクセル出力";
+            btnOutput.Text = "出力";
             btnOutput.UseVisualStyleBackColor = true;
             btnOutput.Click += btnOutput_Click;
             // 
             // btnSave
             // 
             btnSave.Font = new Font("Yu Gothic UI", 12F);
-            btnSave.Location = new Point(423, 86);
+            btnSave.Location = new Point(422, 86);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(82, 31);
             btnSave.TabIndex = 4;
@@ -462,7 +459,7 @@
             // btnLoad
             // 
             btnLoad.Font = new Font("Yu Gothic UI", 12F);
-            btnLoad.Location = new Point(511, 86);
+            btnLoad.Location = new Point(510, 86);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(82, 31);
             btnLoad.TabIndex = 4;
@@ -1649,7 +1646,6 @@
             // 
             // tpKodawari4
             // 
-            tpKodawari4.Controls.Add(grpOriginal);
             tpKodawari4.Controls.Add(grpSonota);
             tpKodawari4.Location = new Point(4, 24);
             tpKodawari4.Name = "tpKodawari4";
@@ -1658,26 +1654,6 @@
             tpKodawari4.TabIndex = 4;
             tpKodawari4.Text = "こだわり条件4";
             tpKodawari4.UseVisualStyleBackColor = true;
-            // 
-            // grpOriginal
-            // 
-            grpOriginal.Controls.Add(chkOriginal1);
-            grpOriginal.Location = new Point(6, 109);
-            grpOriginal.Name = "grpOriginal";
-            grpOriginal.Size = new Size(350, 53);
-            grpOriginal.TabIndex = 2;
-            grpOriginal.TabStop = false;
-            grpOriginal.Text = "オリジナル";
-            // 
-            // chkOriginal1
-            // 
-            chkOriginal1.AutoSize = true;
-            chkOriginal1.Location = new Point(16, 22);
-            chkOriginal1.Name = "chkOriginal1";
-            chkOriginal1.Size = new Size(226, 19);
-            chkOriginal1.TabIndex = 0;
-            chkOriginal1.Text = "和室を含むことが明らかな場合は除外する";
-            chkOriginal1.UseVisualStyleBackColor = true;
             // 
             // grpSonota
             // 
@@ -1768,7 +1744,7 @@
             // lblDesc
             // 
             lblDesc.AutoSize = true;
-            lblDesc.Location = new Point(451, 128);
+            lblDesc.Location = new Point(453, 130);
             lblDesc.Name = "lblDesc";
             lblDesc.Size = new Size(72, 15);
             lblDesc.TabIndex = 0;
@@ -1776,7 +1752,7 @@
             // 
             // edtKensu
             // 
-            edtKensu.Location = new Point(451, 146);
+            edtKensu.Location = new Point(453, 148);
             edtKensu.Name = "edtKensu";
             edtKensu.ReadOnly = true;
             edtKensu.Size = new Size(112, 23);
@@ -1786,11 +1762,11 @@
             // btnPreview
             // 
             btnPreview.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btnPreview.Location = new Point(423, 49);
+            btnPreview.Location = new Point(422, 49);
             btnPreview.Name = "btnPreview";
             btnPreview.Size = new Size(171, 31);
             btnPreview.TabIndex = 4;
-            btnPreview.Text = "エクセルプレビュー";
+            btnPreview.Text = "プレビュー表示";
             btnPreview.UseVisualStyleBackColor = true;
             btnPreview.Click += btnPreview_Click;
             // 
@@ -1858,8 +1834,6 @@
             grpSecurity.ResumeLayout(false);
             grpSecurity.PerformLayout();
             tpKodawari4.ResumeLayout(false);
-            grpOriginal.ResumeLayout(false);
-            grpOriginal.PerformLayout();
             grpSonota.ResumeLayout(false);
             grpSonota.PerformLayout();
             ResumeLayout(false);
@@ -2014,7 +1988,5 @@
         private CheckBox chkShitunai2;
         private CheckBox chkShitunai1;
         private Button btnPreview;
-        private GroupBox grpOriginal;
-        private CheckBox chkOriginal1;
     }
 }
