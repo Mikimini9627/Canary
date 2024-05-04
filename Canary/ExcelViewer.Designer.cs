@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExcelViewer));
             reoGridControl = new unvell.ReoGrid.ReoGridControl();
             SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1044, 562);
             Controls.Add(reoGridControl);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ExcelViewer";
             StartPosition = FormStartPosition.CenterParent;
             Text = "検索結果一覧";

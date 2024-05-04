@@ -11,19 +11,35 @@ using System.Windows.Forms;
 
 namespace Canary
 {
+    /// <summary>
+    /// ビューア画面クラス
+    /// </summary>
     public partial class ExcelViewer : Form
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="endColumn"></param>
         public ExcelViewer(string path, int endColumn)
         {
             InitializeComponent();
 
+            // ファイルを読み込む
             reoGridControl.Load(path);
 
+            // シートを取得する
             var sheet = reoGridControl.CurrentWorksheet;
 
+            // フィルターをかける
             sheet.CreateColumnFilter("A", ToAlphabet(endColumn));
         }
 
+        /// <summary>
+        ///  数字から列名に変換する
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         private string ToAlphabet(int index)
         {
             string alphabet = string.Empty;
